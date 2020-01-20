@@ -87,7 +87,7 @@ pbr==1.8.1
 pep8==1.6.2
 pexpect==3.3
 pickleshare==0.5
-Pillow==3.0.0
+Pillow==6.2.0
 ply==3.8
 psutil==2.2.1
 ptyprocess==0.5
