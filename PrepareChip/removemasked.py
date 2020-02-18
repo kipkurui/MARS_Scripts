@@ -25,7 +25,7 @@ def removemasked(fa, out):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print __doc__
+        print(__doc__)
         sys.exit(1)
     fa = sys.argv[1]
     out = sys.argv[2]

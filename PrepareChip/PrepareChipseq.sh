@@ -1,7 +1,7 @@
 #Above parameters can be changed to pick a different file
 #Might need to make this into a python script and make it as generic as possible
 function Getfasta {
-				cut -f 1,2,3 wgEncodeAwgTfbs"$lab""$cl""$tf"*Peak | bed-widen -width $siz >$cl-$tf-$siz.bed
+				cut -f 1,2,3 $input_BED | bed-widen -width $siz >$cl-$tf-$siz.bed
 				if [ -s "$cl-$tf-$siz.bed" ]; then
 				
 					#Extract the negative sequence
@@ -10,14 +10,15 @@ function Getfasta {
 					fastaFromBed -tab -fi $hg -bed $cl-$tf-$siz.negbed -fo $cl-$tf-$siz.negfa
 					
 					# Prepare the fasta seqences 
-					cut -f 7 wgEncodeAwgTfbs"$lab""$cl""$tf"*Peak >/tmp/f1
+					cut -f 7 $input_BED >/tmp/f1
 					cut -f 1 $cl-$tf-$siz.fa >/tmp/f2
 					cut -f 2 $cl-$tf-$siz.fa >/tmp/f3
 					paste /tmp/f2 /tmp/f1 /tmp/f3  >/tmp/$cl-$tf-$siz.fasta
 					python removemasked.py /tmp/$cl-$tf-$siz.fasta $cl-$tf-$siz.fasta
 					rm /tmp/f*
+
 					#Do the same for the negative sequences
-					cut -f 7 wgEncodeAwgTfbs"$lab""$cl""$tf"*Peak >/tmp/f1
+					cut -f 7 $input_BED >/tmp/f1
 					cut -f 1 $cl-$tf-$siz.negfa >/tmp/f2
 					cut -f 2 $cl-$tf-$siz.negfa >/tmp/f3
 					paste /tmp/f2 /tmp/f1 /tmp/f3  >/tmp/$cl-$tf-$siz.negfasta
@@ -35,7 +36,7 @@ function Getfasta {
 	}
 
 hg=$1 #$HOME/Project/Data/genomes/hg19/hg19.fa #change this to your hg path
-lab=$2 #Sydh
+lab=$2 #Sy
 cl=$3 #Hepg2
 tf=$4 #Max
 siz=$5 #100 #the length of the motifs

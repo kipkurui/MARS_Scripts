@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-#trying to make this a single run.
+#trying to make this a single run. 
 
 ###JASPAR
 

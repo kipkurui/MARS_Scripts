@@ -75,6 +75,8 @@ def geturl(meme):
                 NAME=line.split()[2]
                 print "%i\t%s\t%s\t%i\n" % (ID,BASE_ID,NAME,ID),
                 
+
+#TODO: Make this scipt take commandline input
 meme="/home/kipkurui/Project/Motif_Assessment/Data/Motifs/Clean_DB/HOCOMOCOv9.meme"
 test2="/home/kipkurui/Project/Scripts/PHD/Gabpa/Gabpa_secondary.meme"
 jas="/home/kipkurui/Project/Motif_Assessment/Data/Motifs/Clean_DB/Kheradpour-2013.meme"
